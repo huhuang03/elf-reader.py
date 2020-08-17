@@ -19,9 +19,10 @@ class Section:
 
         self.type = b_to_int(self.sh_type)
         self.size = b_to_int(self.sh_size)
+        self.offset = b_to_int(self.sh_offset)
 
         def pp():
             return f"sh_offset: "
 
     def __str__(self):
-        return f"Section(offset = {hex(self.sh_offset)}, size={self.size})"
+        return f"Section(offset = {hex(self.offset)}, size={self.size})"

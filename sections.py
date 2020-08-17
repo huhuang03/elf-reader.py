@@ -12,7 +12,13 @@ class Sections():
         for i in range(0, shnum):
             start = shoff + i * shentsize
             self.sections.append(Section(self.elf, start))
-        self.s_str = [s for s in self.sections if section_type.s_strtab.value == s.type]
+        self.s_strs = [s for s in self.sections if section_type.s_strtab.value == s.type]
+
+    def str_section_content(self):
+        """
+        return: list of string bytes.
+        """
+        return [self.elf.content[s.offset: s.offset + s.size] for s in self.s_strs]
 
     def pp(self):
         pass
