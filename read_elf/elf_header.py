@@ -28,6 +28,9 @@ class ElfHeader(BaseELFPart):
         self.e_entry = self.part(0x18, 4, 0x18, 8)
         self.entry = b_to_int(self.e_entry)
 
+        self.e_shstrndx = self.part(0x32, 2, 0x3e)
+        self.shstrndx = b_to_int(self.e_shstrndx)
+
         self._machine = self.part(_INDEX_MACHINE, 2)
         # _machine has size 2 but only 1 byte useful
         assert(self._machine[1] == 0x00)
@@ -36,7 +39,7 @@ class ElfHeader(BaseELFPart):
     def pp(self):
         return f"e_machine: {b_to_hex(self._machine)}"\
             + f"\nentry: {hex(self.entry)}"\
-            + f"\nsecton: offset: {hex(self.shoff)} shnum: {self.shnum} shentsize: {self.shentsize}"
+            + f"\nsecton: offset: {hex(self.shoff)}, shnum: {self.shnum}, shentsize: {self.shentsize}, shstrndx: {self.shstrndx}"
 
     def _check_section_end_file(self):
         section_end = self.shoff + self.shentsize * self.shnum

@@ -1,14 +1,18 @@
-from elf_header import ElfHeader
-from sections import Sections
+from .elf_header import ElfHeader
+from .sections import Sections
 
 # the entier elf
 class ELF:
-    def __init__(self, content):
+    def __init__(self, path):
         super().__init__()
-        self.content = content
+        self.content = open(path, 'rb').read()
         self.len = len(self.content)
         self.elf_header = ElfHeader(self)
         self.sections = Sections(self, self.elf_header.shoff, self.elf_header.shnum, self.elf_header.shentsize)
+
+    def get_sh_by_name(self, name):
+        l = [s for s in self.sections.shs if s.name == name]
+        return next(iter(l), None)
 
     def extra(self, index: int, size: int) -> int:
         return self.content[index: index + size]
@@ -27,6 +31,6 @@ class ELF:
             print(", ".join([s.decode('utf-8') for s in content_bytes.split(b'\x00')]))
 
     def pp(self):
-        desc = self.elf_header.pp()\
-            + "\n" + ' '.join([str(s) for s in self.sections.s_str])
+        pp_sections = self.sections.pp_str()
+        desc = self.elf_header.pp() + "\n" + pp_sections
         print(desc)

@@ -1,12 +1,15 @@
 from tools.data_convert import *
 
-class Section:
+class SectionHeader:
     def __init__(self, elf, start):
         super().__init__()
         self.elf = elf
         self.start = start
 
         self.sh_name = self.elf.part(start + 0, 4)
+        self.i_name = b_to_int(self.sh_name)
+        self.name = "unk"
+
         self.sh_type = self.elf.part(start + 4, 4)
         self.sh_flags = self.elf.part(start + 8, 4, start + 8, 8)
         self.sh_addr = self.elf.part(start + 0xc, 4, start + 0x10, 8)

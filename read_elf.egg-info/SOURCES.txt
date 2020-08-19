@@ -1,0 +1,15 @@
+setup.py
+read_elf/base_elf_part.py
+read_elf/elf.py
+read_elf/elf_header.py
+read_elf/machine_map.py
+read_elf/part.py
+read_elf/section_header.py
+read_elf/section_str.py
+read_elf/section_type.py
+read_elf/sections.py
+read_elf.egg-info/PKG-INFO
+read_elf.egg-info/SOURCES.txt
+read_elf.egg-info/dependency_links.txt
+read_elf.egg-info/top_level.txt
+test/test_data_convert.py
