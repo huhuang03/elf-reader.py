@@ -1,4 +1,4 @@
-from tools.data_convert import *
+from .tools.data_convert import *
 
 class SectionHeader:
     def __init__(self, elf, start):

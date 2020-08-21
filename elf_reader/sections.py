@@ -1,6 +1,6 @@
-from section_header import SectionHeader
-import section_type
-from section_str import SectionStr
+from .section_header import SectionHeader
+import elf_reader.section_type as section_type
+from .section_str import SectionStr
 
 class Sections():
     def __init__(self, elf, shoff, shnum, shentsize):
@@ -19,8 +19,6 @@ class Sections():
 
         self.s_str = SectionStr(self.elf, self.sh_shstr)
         for sh in self.shs:
-            # print(self.s_str.strs)
-            # print(len(self.s_str.strs))
             sh.name = self.s_str.get_str(sh.i_name)
 
     def str_section_content(self):

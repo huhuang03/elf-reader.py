@@ -6,5 +6,5 @@ setup(
     author="th",
     author_email="huhuang03@gmail.com",
     url="github.com/huhuang03/elf-reader",
-    packages=['read_elf']
+    packages=['elf_reader']
 )

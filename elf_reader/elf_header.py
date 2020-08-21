@@ -1,5 +1,5 @@
-from base_elf_part import BaseELFPart
-from tools.data_convert import *
+from .base_elf_part import BaseELFPart
+from .tools.data_convert import *
 
 _INDEX_CLASS = 0x4
 _INDEX_MACHINE = 0x12

@@ -16,9 +16,6 @@ class SectionStr():
         """
         param index: the index of bytes.
         """
-        print(index)
-        print(self.content)
-        print(self.content[index: index + 1])
         end = self.content.index(_B_SPLIT, index + 1)
 
         # handle first str, which is starts with _B_SPLIT
@@ -26,7 +23,6 @@ class SectionStr():
         if index == 0 and self.content[index] == _B_SPLIT:
             start = 1
         content = self.content[start: end]
-        print(content)
 
         return content.decode('utf-8')
 
