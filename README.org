@@ -1,3 +1,5 @@
+Deprecated! Because I want impl this in c++.
+
 A reinvent whell. But what's the better way to learn elf than handly parse it?
 
 * TODOS
